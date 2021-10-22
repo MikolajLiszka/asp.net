@@ -1,0 +1,59 @@
+﻿@model ICollection<wypozyczalnia_gier.Models.Gra>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Liczba gier: @Model.Count</h1>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Numer indeksu
+            </th>
+            <th>
+                Kategoria
+            </th>
+            <th>
+                Data wydania
+            </th>
+            <th>
+                Poziom trudności
+            </th>
+            <th>
+                Cena wypożyczenia
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var gra in @Model)
+            {
+        <tr>
+            <td>
+                @gra.Id
+            </td>
+            <td>
+                @gra.KategoriaGry
+            </td>
+            <td>
+                @gra.DataStworzeniaGry
+            </td>
+            <td>
+                @gra.PoziomTrudnosciGry
+            </td>
+            <td>
+                @gra.CenaWypozyczeniaGry
+            </td>
+            <td>
+                <a class="btn btn-primary" 
+                   asp-controller="Gra" 
+                   asp-action="Edit" 
+                   asp-route-id="@gra.Id">Edytuj</a>
+                <a class="btn btn-primary">Usuń</a>
+                <a class="btn btn-primary">Szczegóły</a>
+            </td>
+        </tr>
+            }
+    </tbody>
+</table>

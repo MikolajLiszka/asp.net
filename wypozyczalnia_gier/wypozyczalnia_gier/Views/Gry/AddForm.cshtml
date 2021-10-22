@@ -1,0 +1,44 @@
+﻿@model wypozyczalnia_gier.Models.Gra
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container-fluid m-3">
+    <form method="post" asp-action="Add">
+        <div class="mb-3">
+            <div>
+                <span asp-validation-for="TytulGry" class="text-danger"></span>
+            </div>
+            <input class="form-control" asp-for="TytulGry"/>
+        </div>
+        <div class="mb-3">
+            <div>
+                <span asp-validation-for="KategoriaGry" class="text-danger"></span>
+            </div>
+            <input class="form-control" asp-for="KategoriaGry" />
+        </div>
+        <div class="mb-3">
+            <div>
+                <span asp-validation-for="DataStworzeniaGry" class="text-danger"></span>
+            </div>
+            <input class="form-control" asp-for="DataStworzeniaGry" />
+        </div>
+        <div class="mb-3">
+            <div>
+                <span asp-validation-for="PoziomTrudnosciGry" class="text-danger"></span>
+            </div>
+            <input class="form-control" asp-for="PoziomTrudnosciGry" />
+        </div>
+        <div class="mb-3">
+            <div>
+                <span asp-validation-for="CenaWypozyczeniaGry" class="text-danger"></span>
+            </div>
+            <input class="form-control" asp-for="CenaWypozyczeniaGry" />
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Dodaj grę</button>
+        </div>
+    </form>
+</div>
