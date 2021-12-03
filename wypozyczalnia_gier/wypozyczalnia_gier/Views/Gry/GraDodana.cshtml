@@ -16,9 +16,6 @@
                 Kategoria
             </th>
             <th>
-                Data wydania
-            </th>
-            <th>
                 Poziom trudności
             </th>
             <th>
@@ -34,10 +31,10 @@
                 @gra.Id
             </td>
             <td>
-                @gra.KategoriaGry
+                @gra.TytulGry
             </td>
             <td>
-                @gra.DataStworzeniaGry
+                @gra.KategoriaGry
             </td>
             <td>
                 @gra.PoziomTrudnosciGry
@@ -47,13 +44,17 @@
             </td>
             <td>
                 <a class="btn btn-primary" 
-                   asp-controller="Gra" 
+                   asp-controller="Gry" 
                    asp-action="Edit" 
                    asp-route-id="@gra.Id">Edytuj</a>
-                <a class="btn btn-primary">Usuń</a>
+                <a class="btn btn-primary"
+                   asp-controller="Gry" 
+                   asp-action="Delete" 
+                   asp-route-id="@gra.Id">Usuń</a>
                 <a class="btn btn-primary">Szczegóły</a>
             </td>
         </tr>
             }
+    <a class="btn btn-primary" asp-action="Add" asp-controller="Gry">Dodaj grę</a>
     </tbody>
 </table>
