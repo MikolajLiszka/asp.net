@@ -7,7 +7,7 @@
 
 <div class="container-fluid m-3">
     <form method="post" asp-action="Edit">
-            <input class="form-control" asp-for="Id" />
+        <input class="form-control" asp-for="Id" />
         <div class="mb-3">
             <div>
                 <span asp-validation-for="TytulGry" class="text-danger"></span>
@@ -22,9 +22,15 @@
         </div>
         <div class="mb-3">
             <div>
-                <span asp-validation-for="PoziomTrudnosciGry" class="text-danger"></span>
+                <span asp-validation-for="DeweloperGry" class="text-danger"></span>
             </div>
-            <input class="form-control" asp-for="PoziomTrudnosciGry" />
+            <input class="form-control" asp-for="DeweloperGry" />
+        </div>
+        <div class="mb-3">
+            <div>
+                <span asp-validation-for="PEGI" class="text-danger"></span>
+            </div>
+            <input class="form-control" asp-for="PEGI" />
         </div>
         <div class="mb-3">
             <div>
@@ -33,7 +39,7 @@
             <input class="form-control" asp-for="CenaWypozyczeniaGry" />
         </div>
         <div class="mb-3">
-            <button class="btn btn-primary" type="submit">Zapiszgrę</button>
+            <button class="btn btn-primary" type="submit">Zapisz grę</button>
         </div>
     </form>
 </div>

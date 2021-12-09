@@ -14,39 +14,26 @@ namespace wypozyczalnia_gier.Models
         [HiddenInput]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Wpisz tytuł gry!")]
+        [Required(ErrorMessage = "Wpisz tytuł!")]
         public string TytulGry { get; set; }
         
-        [Required(ErrorMessage = "Wpisz kategorię gry!")]
+        [Required(ErrorMessage = "Wpisz kategorię!")]
         public string KategoriaGry { get; set; }
 
-        [Required(ErrorMessage = "Wpisz poziom trudności gry!")]
-        public string PoziomTrudnosciGry { get; set; }
+        [Required(ErrorMessage = "Wpisz dewelopera!")]
+        public string DeweloperGry { get; set; }
+
+        [Required(ErrorMessage = "Wpisz PEGI!")]
+        public int PEGI { get; set; }
 
         [Required(ErrorMessage = "Wpisz cenę wypożyczenia gry!")]
         public string CenaWypozyczeniaGry { get; set; }
     }
 
-    public class IGamesRepository
-    {
-        IQueryable<Gra> Games { get; }
-    }
 
-    public class ApplicationDbContext : DbContext
-    {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        public DbSet<Gra> Games { get; set; }
-    }
+   
 
-    public class EFGamesRepository : IGamesRepository
-    {
-        private ApplicationDbContext _applicationDbContext;
 
-        public EFGamesRepository(ApplicationDbContext applicationDbContext)
-        {
-            _applicationDbContext = applicationDbContext;
-        }
-        public IQueryable<Gra> Games => _applicationDbContext.Games;
-    }
+
 
 }

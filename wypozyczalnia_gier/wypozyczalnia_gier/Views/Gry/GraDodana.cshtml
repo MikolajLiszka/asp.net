@@ -13,10 +13,16 @@
                 Numer indeksu
             </th>
             <th>
+                Tytuł
+            </th>
+            <th>
                 Kategoria
             </th>
             <th>
-                Poziom trudności
+                Deweloper
+            </th>
+            <th>
+                PEGI
             </th>
             <th>
                 Cena wypożyczenia
@@ -37,19 +43,22 @@
                 @gra.KategoriaGry
             </td>
             <td>
-                @gra.PoziomTrudnosciGry
+                @gra.DeweloperGry
+            </td>
+            <td>
+                @gra.PEGI
             </td>
             <td>
                 @gra.CenaWypozyczeniaGry
             </td>
             <td>
-                <a class="btn btn-primary" 
-                   asp-controller="Gry" 
-                   asp-action="Edit" 
+                <a class="btn btn-primary"
+                   asp-controller="Gry"
+                   asp-action="Edit"
                    asp-route-id="@gra.Id">Edytuj</a>
                 <a class="btn btn-primary"
-                   asp-controller="Gry" 
-                   asp-action="Delete" 
+                   asp-controller="Gry"
+                   asp-action="Delete"
                    asp-route-id="@gra.Id">Usuń</a>
                 <a class="btn btn-primary">Szczegóły</a>
             </td>

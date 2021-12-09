@@ -27,8 +27,6 @@ namespace wypozyczalnia_gier
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Games:ConnectionString"]));
-            services.AddTransient<IGamesRepository, EFGamesRepository>();
             services.AddMvc();
             services.AddMemoryCache();
             services.AddSession();

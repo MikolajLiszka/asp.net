@@ -9,25 +9,31 @@
     <form method="post" asp-action="Add">
         <div class="mb-3">
             <div>
-                <span asp-validation-for="TytulGry" class="text-danger"></span>
+                <span asp-validation-for="TytulGry" class="text-danger">Tytuł gry:</span>
             </div>
-            <input class="form-control" asp-for="TytulGry"/>
+            <input class="form-control" asp-for="TytulGry" />
         </div>
         <div class="mb-3">
             <div>
-                <span asp-validation-for="KategoriaGry" class="text-danger"></span>
+                <span asp-validation-for="KategoriaGry" class="text-danger">Kategoria gry:</span>
             </div>
             <input class="form-control" asp-for="KategoriaGry" />
         </div>
         <div class="mb-3">
             <div>
-                <span asp-validation-for="PoziomTrudnosciGry" class="text-danger"></span>
+                <span asp-validation-for="DeweloperGry" class="text-danger">Deweloper gry:</span>
             </div>
-            <input class="form-control" asp-for="PoziomTrudnosciGry" />
+            <input class="form-control" asp-for="DeweloperGry" />
         </div>
         <div class="mb-3">
             <div>
-                <span asp-validation-for="CenaWypozyczeniaGry" class="text-danger"></span>
+                <span asp-validation-for="PEGI" class="text-danger">PEGI:</span>
+            </div>
+            <input class="form-control" asp-for="PEGI" />
+        </div>
+        <div class="mb-3">
+            <div>
+                <span asp-validation-for="CenaWypozyczeniaGry" class="text-danger">Cena za wypożyczenie:</span>
             </div>
             <input class="form-control" asp-for="CenaWypozyczeniaGry" />
         </div>

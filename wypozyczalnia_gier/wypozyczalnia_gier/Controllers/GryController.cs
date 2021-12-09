@@ -13,9 +13,9 @@ namespace wypozyczalnia_gier.Controllers
 
         static List<Gra> gryLista = new List<Gra>()
         {
-            new Gra(){Id= counter++, TytulGry = "Diablo III", KategoriaGry = "rpg", PoziomTrudnosciGry = "średnia", CenaWypozyczeniaGry = "10 złotych"},
-            new Gra(){Id= counter++, TytulGry = "Diablo II", KategoriaGry = "rpg", PoziomTrudnosciGry = "średnia", CenaWypozyczeniaGry = "10 złotych"},
-            new Gra(){Id= counter++, TytulGry = "Diablo", KategoriaGry = "rpg", PoziomTrudnosciGry = "średnia", CenaWypozyczeniaGry = "10 złotych"}
+            new Gra(){Id= counter++, TytulGry = "Diablo III", KategoriaGry = "RPG", DeweloperGry = "Blizzard Entertainment", PEGI = 16, CenaWypozyczeniaGry = "10 złotych"},
+            new Gra(){Id= counter++, TytulGry = "Cyberpunk 2077", KategoriaGry = "Akcja", DeweloperGry = "CD Projekt Red", PEGI = 18, CenaWypozyczeniaGry = "10 złotych"},
+            new Gra(){Id= counter++, TytulGry = "Wiedźmin III : Dziki Gon", KategoriaGry = "Akcja", DeweloperGry = "CD Projekt Red", PEGI = 18, CenaWypozyczeniaGry = "10 złotych"}
         };
         static int counter = 0;
 
@@ -47,7 +47,9 @@ namespace wypozyczalnia_gier.Controllers
             {
                 graFromSerwer.TytulGry = gra.TytulGry;
                 graFromSerwer.KategoriaGry = gra.KategoriaGry;
-                graFromSerwer.PoziomTrudnosciGry = gra.PoziomTrudnosciGry;
+                graFromSerwer.DeweloperGry = gra.DeweloperGry;
+                graFromSerwer.PEGI = gra.PEGI;
+                graFromSerwer.CenaWypozyczeniaGry = gra.CenaWypozyczeniaGry;
                 return View("GraDodana", gryLista);
             }
             else
@@ -84,15 +86,6 @@ namespace wypozyczalnia_gier.Controllers
             {
                 return View("AddForm");
             }
-        }
-
-        
-
-        private ICrudGryRepository gry;
-
-        public GryController(ICrudGryRepository gry)
-        {
-            this.gry = gry;
         }
     }
 }
