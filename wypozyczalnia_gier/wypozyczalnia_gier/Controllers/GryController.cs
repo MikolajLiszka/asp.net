@@ -87,5 +87,15 @@ namespace wypozyczalnia_gier.Controllers
                 return View("AddForm");
             }
         }
+
+        private IGryRepository repository;
+        public GryController(IGryRepository repository)
+        {
+            this.repository = repository;
+        }
+        public ViewResult GryRepository()
+        {
+            return View(repository.Gry);
+        }
     }
 }
