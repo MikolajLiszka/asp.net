@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +25,11 @@ namespace wypozyczalnia_gier.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Gra> Gry { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        {
+            modelBuilder.Entity<Gra>().Navigation(e => e.KategoriaGry).AutoInclude();
+        }
+
         public DbSet<Kategoria> Kategorie { get; set; }
     }
 
@@ -36,4 +44,10 @@ namespace wypozyczalnia_gier.Models
 
         public IQueryable<Kategoria> Kategorie => _applicationDbContext.Kategorie;
     }
+
+    /*public class AppIdentityDbContext : IdentityDbContext<IdentityUser>
+    {
+        public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options) { }
+    }
+    */
 }

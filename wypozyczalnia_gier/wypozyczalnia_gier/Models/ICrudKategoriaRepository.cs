@@ -28,9 +28,9 @@ namespace wypozyczalnia_gier.Models
         }
         public Kategoria Delete(int id)
         {
-            var product = _context.Kategorie.Remove(Find(id)).Entity;
+            var kategorie = _context.Kategorie.Remove(Find(id)).Entity;
             _context.SaveChanges();
-            return product;
+            return kategorie;
         }
         public Kategoria Add(Kategoria kategoria)
         {

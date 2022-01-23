@@ -4,16 +4,19 @@
     ViewData["Title"] = "ListaGierView";
 }
 
-<h1>ListaGierView</h1>
+<h1>Lista gier</h1>
 
 <p>
-    <a asp-action="Add">Dodaj nową grę</a>
+    <a asp-action="Add">Dodaj nową grę</a> |
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.TytulGry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KategoriaGry)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeweloperGry)
@@ -28,10 +31,13 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.TytulGry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KategoriaGry.Nazwa)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DeweloperGry)
@@ -49,5 +55,8 @@
             </td>
         </tr>
 }
+        <div>
+            <a asp-action="Gry" asp-controller="Gry">Wróć</a>
+        </div>
     </tbody>
 </table>

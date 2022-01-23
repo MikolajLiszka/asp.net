@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace wypozyczalnia_gier.Models
 {
@@ -39,13 +40,14 @@ namespace wypozyczalnia_gier.Models
             }
             public Gra Update(Gra gry)
             {
+                gry.KategoriaGry = _context.Kategorie.Find(gry.KategoriaGry.Id);
                 var entity = _context.Gry.Update(gry).Entity;
                 _context.SaveChanges();
                 return entity;
             }
             public IList<Gra> FindAll()
             {
-                return _context.Gry.ToList();
+            return _context.Gry.Include(g => g.KategoriaGry).ToList();
             }
         }
 }
