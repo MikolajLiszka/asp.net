@@ -1,0 +1,53 @@
+﻿@model IEnumerable<wypozyczalnia_gier.Models.Gra>
+
+@{
+    ViewData["Title"] = "ListaGierView";
+}
+
+<h1>ListaGierView</h1>
+
+<p>
+    <a asp-action="Add">Dodaj nową grę</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TytulGry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeweloperGry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PEGI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CenaWypozyczeniaGry)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TytulGry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeweloperGry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PEGI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CenaWypozyczeniaGry)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

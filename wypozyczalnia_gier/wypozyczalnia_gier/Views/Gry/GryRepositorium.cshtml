@@ -4,3 +4,53 @@
 *@
 @{
 }
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Numer indeksu
+            </th>
+            <th>
+                Tytuł
+            </th>
+            <th>
+                Kategoria
+            </th>
+            <th>
+                Deweloper
+            </th>
+            <th>
+                PEGI
+            </th>
+            <th>
+                Cena wypożyczenia
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var gra in @Model)
+        {
+            <tr>
+                <td>
+                    @gra.Id
+                </td>
+                <td>
+                    @gra.TytulGry
+                </td>
+                <td>
+                    @gra.KategoriaGry
+                </td>
+                <td>
+                    @gra.DeweloperGry
+                </td>
+                <td>
+                    @gra.PEGI
+                </td>
+                <td>
+                    @gra.CenaWypozyczeniaGry
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

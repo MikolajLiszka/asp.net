@@ -1,0 +1,42 @@
+﻿@model wypozyczalnia_gier.Models.Gra
+
+@{
+    ViewData["Title"] = "GraDetailView";
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+    <h4>Gra</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TytulGry)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TytulGry)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DeweloperGry)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DeweloperGry)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PEGI)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PEGI)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CenaWypozyczeniaGry)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CenaWypozyczeniaGry)
+        </dd>
+    </dl>
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>*@ |
+    <a asp-action="ListaGier" asp-controller="Gry">Back to List</a>
+</div>

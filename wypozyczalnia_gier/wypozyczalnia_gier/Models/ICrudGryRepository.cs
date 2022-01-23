@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 
 namespace wypozyczalnia_gier.Models
 {
-    public interface ICrudGryRepository
-    {
         public interface ICrudGraRepository
         {
             Gra Find(int id);
@@ -16,7 +14,7 @@ namespace wypozyczalnia_gier.Models
             IList<Gra> FindAll();
         }
 
-        class CrudGraRepository : ICrudGraRepository
+        public class CrudGraRepository : ICrudGraRepository
         {
             private ApplicationDbContext _context;
             public CrudGraRepository(ApplicationDbContext context)
@@ -50,5 +48,4 @@ namespace wypozyczalnia_gier.Models
                 return _context.Gry.ToList();
             }
         }
-    }
 }

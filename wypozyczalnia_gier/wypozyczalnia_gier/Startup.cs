@@ -28,7 +28,9 @@ namespace wypozyczalnia_gier
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration["Data:Gry:ConnectionString"]));
-            services.AddTransient<IGryRepository, EFGryRepository>();
+            //services.AddTransient<IGryRepository, EFGryRepository>();
+            services.AddTransient<ICrudGraRepository, CrudGraRepository>();
+            services.AddTransient<ICrudKategoriaRepository, CrudKategoriaRepository>();
 
             services.AddControllersWithViews();
             services.AddMvc();

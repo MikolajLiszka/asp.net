@@ -13,37 +13,39 @@ namespace wypozyczalnia_gier.Controllers
 
         static List<Gra> gryLista = new List<Gra>()
         {
-            new Gra(){Id= counter++, TytulGry = "Diablo III", KategoriaGry = "RPG", DeweloperGry = "Blizzard Entertainment", PEGI = 16, CenaWypozyczeniaGry = "10 złotych"},
+           /* new Gra(){Id= counter++, TytulGry = "Diablo III", KategoriaGry = "RPG", DeweloperGry = "Blizzard Entertainment", PEGI = 16, CenaWypozyczeniaGry = "10 złotych"},
             new Gra(){Id= counter++, TytulGry = "Cyberpunk 2077", KategoriaGry = "Akcja", DeweloperGry = "CD Projekt Red", PEGI = 18, CenaWypozyczeniaGry = "10 złotych"},
             new Gra(){Id= counter++, TytulGry = "Wiedźmin III : Dziki Gon", KategoriaGry = "Akcja", DeweloperGry = "CD Projekt Red", PEGI = 18, CenaWypozyczeniaGry = "10 złotych"}
+           */
         };
-        static int counter = 0;
+        //static int counter = 0;
 
         public IActionResult ListaGier()
         {
-            return View("GraDodana", gryLista);
+            return View("ListaGierView", repository.FindAll());
+            //return View("GryRepositorium", repository.FindAll());
         }
 
         public IActionResult Edit(int Id)
         {
-            Gra gra = gryLista.Find(s => s.Id == Id);
-            foreach (var game in gryLista)
-            {
-                if (game.Id == Id)
-                {
-                    gra = game;
-                    break;
-                }
-            }
-            return View("EditForm", gra);
+            Gra gra = repository.Find(Id);
+
+            return View("GraEditViewForm", gra);
         }
 
         [HttpPost]
         public IActionResult Edit(Gra gra)
         {
-            int id = gra.Id;
-            Gra graFromSerwer = gryLista.Find(s => s.Id == id);
-            if (ModelState.IsValid)
+            repository.Update(gra);
+
+            //int id = gra.Id;
+            //Gra graFromSerwer = repository.Find()
+
+            //  gryLista.Find(s => s.Id == id);
+
+            return View("ListaGierView", repository.FindAll());
+
+            /*if (ModelState.IsValid)
             {
                 graFromSerwer.TytulGry = gra.TytulGry;
                 graFromSerwer.KategoriaGry = gra.KategoriaGry;
@@ -55,39 +57,61 @@ namespace wypozyczalnia_gier.Controllers
             else
             {
                 return View("GraDodana", graFromSerwer);
-            }
+            }*/
         }
         public IActionResult Delete(int Id)
         {
-            Gra graFromSerwer = gryLista.Find(s => s.Id == Id);
-            gryLista.Remove(graFromSerwer);
-            return View("GraDodana", gryLista);
+            repository.Delete(Id);
+
+            return View("ListaGierView", repository.FindAll());
         }
         public IActionResult Index()
         {
             return View();
         }
 
+        public IActionResult Details(int Id)
+        {
+            Gra gra = repository.Find(Id);
+
+            return View("GraDetailView", gra);
+        }
+
+        [HttpPost]
+        public IActionResult Details()
+        {
+            return View("ListaGierView", repository.FindAll());
+        }
+
         public IActionResult Add()
         {
-            return View("AddForm");
+            return View("GraAddViewForm");
         }
         [HttpPost]
         public IActionResult Add(Gra gra)
         {
             if (ModelState.IsValid)
             {
-                counter++;
-                gra.Id = counter;
-                gryLista.Add(gra);
-                return View("GraDodana", gryLista);
+                repository.Add(gra);
+
+                return View("ListaGierView", repository.FindAll());
             }
             else
             {
-                return View("AddForm");
+                return View("GraAddViewForm");
             }
         }
 
+        private ICrudGraRepository repository;
+        public GryController(ICrudGraRepository repository)
+        {
+            this.repository = repository;
+        }
+        public ViewResult GryRepository()
+        {
+            return View(repository.FindAll());
+        }
+         /*
         private IGryRepository repository;
         public GryController(IGryRepository repository)
         {
@@ -97,5 +121,6 @@ namespace wypozyczalnia_gier.Controllers
         {
             return View(repository.Gry);
         }
-    }
+        */
+        }
 }

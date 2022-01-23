@@ -18,7 +18,7 @@ namespace wypozyczalnia_gier.Models
         public string TytulGry { get; set; }
         
         [Required(ErrorMessage = "Wpisz kategorię!")]
-        public string KategoriaGry { get; set; }
+        public Kategoria KategoriaGry { get; set; }
 
         [Required(ErrorMessage = "Wpisz dewelopera!")]
         public string DeweloperGry { get; set; }
