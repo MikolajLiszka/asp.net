@@ -1,6 +1,5 @@
-﻿
-
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,9 +19,10 @@ namespace wypozyczalnia_gier.Models
     }
 
 
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext //IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
         public DbSet<Gra> Gry { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
@@ -32,6 +32,7 @@ namespace wypozyczalnia_gier.Models
 
         public DbSet<Kategoria> Kategorie { get; set; }
     }
+
 
     public class EFGryRepository : IGryRepository
     {
@@ -44,10 +45,4 @@ namespace wypozyczalnia_gier.Models
 
         public IQueryable<Kategoria> Kategorie => _applicationDbContext.Kategorie;
     }
-
-    /*public class AppIdentityDbContext : IdentityDbContext<IdentityUser>
-    {
-        public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options) { }
-    }
-    */
 }

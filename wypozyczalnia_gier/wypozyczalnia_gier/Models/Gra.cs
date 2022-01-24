@@ -19,9 +19,10 @@ namespace wypozyczalnia_gier.Models
         [DisplayName("Tytuł")]
         public string TytulGry { get; set; }
 
+        public Kategoria KategoriaGry { get; set; }
         [DisplayName("Kategoria")]
         [Required(ErrorMessage = "Wpisz kategorię!")]
-        public Kategoria KategoriaGry { get; set; }
+        public int KategoriaGryId { get;  set; }
 
         [DisplayName("Deweloper")]
         [Required(ErrorMessage = "Wpisz dewelopera!")]
@@ -34,6 +35,15 @@ namespace wypozyczalnia_gier.Models
         [DisplayName("Cena")]
         [Required(ErrorMessage = "Wpisz cenę wypożyczenia gry!")]
         public string CenaWypozyczeniaGry { get; set; }
+
+        internal void Patch(Gra gra)
+        {
+            this.TytulGry = gra.TytulGry;
+            this.KategoriaGryId = gra.KategoriaGryId;
+            this.DeweloperGry = gra.DeweloperGry;
+            this.CenaWypozyczeniaGry = gra.CenaWypozyczeniaGry;
+            this.PEGI = gra.PEGI;
+        }
     }
 
 

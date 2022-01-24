@@ -40,7 +40,6 @@ namespace wypozyczalnia_gier.Models
             }
             public Gra Update(Gra gry)
             {
-                gry.KategoriaGry = _context.Kategorie.Find(gry.KategoriaGry.Id);
                 var entity = _context.Gry.Update(gry).Entity;
                 _context.SaveChanges();
                 return entity;

@@ -1,4 +1,4 @@
-﻿@model wypozyczalnia_gier.Models.Gra
+﻿@model wypozyczalnia_gier.Controllers.EditGameViewModel
 
 @{
     ViewData["Title"] = "GraEditViewForm";
@@ -19,9 +19,8 @@
                 <span asp-validation-for="TytulGry" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="KategoriaGry" class="control-label"></label>
-                <input asp-for="KategoriaGry.Nazwa" class="form-control" />
-                <span asp-validation-for="KategoriaGry" class="text-danger"></span>
+                <label asp-for="KategoriaGryId" class="control-label"></label>
+                <select asp-for="KategoriaGryId" asp-items="Model.Categories" class="form-control"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DeweloperGry" class="control-label"></label>

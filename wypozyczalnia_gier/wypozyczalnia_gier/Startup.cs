@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using wypozyczalnia_gier.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace wypozyczalnia_gier
 {
@@ -33,6 +35,9 @@ namespace wypozyczalnia_gier
             services.AddTransient<ICrudKategoriaRepository, CrudKategoriaRepository>();
 
             services.AddControllersWithViews();
+
+//            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+
             services.AddMvc();
             services.AddMemoryCache();
             services.AddSession();
@@ -55,8 +60,9 @@ namespace wypozyczalnia_gier
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
-            app.UseAuthorization();
+//            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

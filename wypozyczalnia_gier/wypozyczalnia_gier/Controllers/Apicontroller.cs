@@ -1,50 +1,41 @@
-﻿/*using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using wypozyczalnia_gier.Models;
 
 namespace wypozyczalnia_gier.Controllers
 {
-    [Route("/api/gryLista")]
-    public class Apicontroller : Controller
+    [Route("/api/gry")]
+    public class ApiController : Controller
     {
-
-        private static List<Gra> gryLista = new List<Gra>()
+        private ICrudGraRepository gameRepository;
+        public ApiController(ICrudGraRepository repository)
         {
-            new Gra(){TytulGry="Wiedzmin", KategoriaGry="RPG", Id=01},
-            new Gra(){TytulGry="Wiedzmin", KategoriaGry="RPG", Id=02}
-        };
-
-        [HttpGet]
-        [Route("{id}")]
-
-        public Gra GetGra(string id)
-        {
-            return gryLista.Where<Gra>(s => s.Id.Equals(id)).First();
+            this.gameRepository = repository;
         }
 
         [HttpGet]
-        public List<Gra> GetGras()
+        [Route("{id}")]
+        public ActionResult GetGra(int id)
         {
-            return gryLista;
+            var gra = this.gameRepository.Find(id);
+            if (gra == null)
+                return NotFound();
+            return Ok(gra);
+        }
+
+        [HttpGet]
+        public IEnumerable<Gra> GetGras()
+        {
+            return this.gameRepository.FindAll();
         }
 
         [HttpPost]
         public ActionResult AddGra([FromBody] Gra gra)
         {
-            if (gra != null)
+            if (gra != null && ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    gra.Id = 03; //dodac do repo
-                    return new CreatedResult($"/api/gryLista/{gra.Id}", gra);
-                }
-                else
-                {
-                    return new BadRequestResult();
-                }
+                this.gameRepository.Add(gra);
+                return new CreatedResult($"/api/gry/{gra.Id}", gra);
             }
             else
             {
@@ -53,14 +44,15 @@ namespace wypozyczalnia_gier.Controllers
         }
 
         [HttpDelete]
-        [Route("{id)")]
-        public ActionResult DeleteGra(string id)
+        [Route("{id}")]
+        public ActionResult DeleteGra(int id)
         {
-            Gra gra = gryLista.Where<Gra>(s => s.Id.Equals(id)).First();
+
+            Gra gra = this.gameRepository.Find(id);
             if (gra != null)
             {
-                gryLista.Remove(gra);
-                return Ok();
+                this.gameRepository.Delete(id);
+                return NoContent();
             }
             else
             {
@@ -70,24 +62,19 @@ namespace wypozyczalnia_gier.Controllers
 
         [HttpPut]
         [Route("{id}")]
-
-        public ActionResult UpdateGra (string id, [FromBody] Gra update)
+        public ActionResult UpdateGra (int id, [FromBody] Gra update)
         {
-            Gra gra = gryLista.Where<Gra>(s => s.Id.Equals(id)).First();
-            if (update.TytulGry != null)
+            Gra gra = this.gameRepository.Find(id);
+            if (gra != null)
             {
-                gra.TytulGry = update.TytulGry;
+                gra.Patch(update);
+                this.gameRepository.Update(gra);
+                return Ok(gra);
             }
-            if (update.KategoriaGry != null)
+            else
             {
-                gra.KategoriaGry = update.KategoriaGry;
+                return NotFound();
             }
-            if (update.DeweloperGry != null)
-            {
-                gra.DeweloperGry = update.DeweloperGry;
-            }
-            //zapisac w repo poupdate
-            return new OkObjectResult(gra);
         }
     }
-}*/
+}
