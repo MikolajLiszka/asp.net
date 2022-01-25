@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using wypozyczalnia_gier.Models;
 using wypozyczalnia_gier.Controllers;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace wypozyczalnia_gier.Controllers
 {
@@ -27,6 +28,7 @@ namespace wypozyczalnia_gier.Controllers
             //return View("GryRepositorium", repository.FindAll());
         }
 
+        [Authorize]
         public IActionResult Edit(int Id)
         {
             Gra gra = gameRepository.Find(Id);
@@ -36,6 +38,7 @@ namespace wypozyczalnia_gier.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(Gra gra)
         {
             if (ModelState.IsValid)
@@ -50,6 +53,7 @@ namespace wypozyczalnia_gier.Controllers
             }
         }
 
+        [Authorize]
         public IActionResult Delete(int Id)
         {
             gameRepository.Delete(Id);
@@ -74,6 +78,7 @@ namespace wypozyczalnia_gier.Controllers
             return View("ListaGierView", gameRepository.FindAll());
         }
 
+        [Authorize]
         public IActionResult Add()
         {
             return View("GraAddViewForm", new EditGameViewModel(this.categoryRepository.FindAll(), this.deweloperRepository.FindAll()));
@@ -81,6 +86,7 @@ namespace wypozyczalnia_gier.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Add(Gra gra)
         {
             if (ModelState.IsValid)
@@ -127,7 +133,7 @@ namespace wypozyczalnia_gier.Controllers
         public readonly SelectList Categories;
         public readonly SelectList Developers;
 
-        public EditGameViewModel(Gra gra, IList<Kategoria> categories, IList<Deweloper> developers) //: this(categories)
+        public EditGameViewModel(Gra gra, IList<Kategoria> categories, IList<Deweloper> developers) : this(categories, developers)
         {
             this.Id = gra.Id;
             this.Patch(gra);
@@ -140,11 +146,6 @@ namespace wypozyczalnia_gier.Controllers
         }
 
 
-        public EditGameViewModel(Gra gra, IList<Deweloper> developers) : this(developers)
-        {
-            this.Id = gra.Id;
-            this.Patch(gra);
-        }
 
         public EditGameViewModel(IList<Deweloper> developers)
         {

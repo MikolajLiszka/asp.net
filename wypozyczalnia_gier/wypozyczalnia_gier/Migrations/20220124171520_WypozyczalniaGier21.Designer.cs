@@ -9,8 +9,8 @@ using wypozyczalnia_gier.Models;
 namespace wypozyczalnia_gier.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220124171520_Identity")]
-    partial class Identity
+    [Migration("20220124171520_WypozyczalniaGer21")]
+    partial class WypozyczalniaGer21
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

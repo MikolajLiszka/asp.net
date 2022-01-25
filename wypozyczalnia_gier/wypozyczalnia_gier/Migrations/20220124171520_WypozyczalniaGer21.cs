@@ -2,7 +2,7 @@
 
 namespace wypozyczalnia_gier.Migrations
 {
-    public partial class Identity : Migration
+    public partial class WypozyczalniaGer21 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -24,7 +24,7 @@ namespace wypozyczalnia_gier.Models
     }
 
 
-    public class ApplicationDbContext : DbContext //IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
@@ -32,6 +32,7 @@ namespace wypozyczalnia_gier.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Gra>().Navigation(e => e.KategoriaGry).AutoInclude();
             modelBuilder.Entity<Gra>().Navigation(g => g.DeweloperGry).AutoInclude();
         }
