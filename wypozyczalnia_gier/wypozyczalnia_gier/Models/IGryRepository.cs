@@ -18,6 +18,11 @@ namespace wypozyczalnia_gier.Models
         IQueryable<Kategoria> Kategorie { get; }
     }
 
+    public interface IDeweloperRepository
+    { 
+        IQueryable<Deweloper> Deweloperzy { get; }
+    }
+
 
     public class ApplicationDbContext : DbContext //IdentityDbContext<IdentityUser>
     {
@@ -28,9 +33,12 @@ namespace wypozyczalnia_gier.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             modelBuilder.Entity<Gra>().Navigation(e => e.KategoriaGry).AutoInclude();
+            modelBuilder.Entity<Gra>().Navigation(g => g.DeweloperGry).AutoInclude();
         }
 
         public DbSet<Kategoria> Kategorie { get; set; }
+
+        public DbSet<Deweloper> Deweloperzy { get; set; }
     }
 
 
@@ -44,5 +52,7 @@ namespace wypozyczalnia_gier.Models
         public IQueryable<Gra> Gry => _applicationDbContext.Gry;
 
         public IQueryable<Kategoria> Kategorie => _applicationDbContext.Kategorie;
+
+        public IQueryable<Deweloper> Deweloperzy => _applicationDbContext.Deweloperzy;
     }
 }

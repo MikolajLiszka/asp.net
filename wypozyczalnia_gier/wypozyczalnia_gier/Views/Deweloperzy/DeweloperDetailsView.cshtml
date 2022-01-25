@@ -1,0 +1,23 @@
+﻿@model wypozyczalnia_gier.Models.Deweloper
+
+@{
+    ViewData["Title"] = "DeweloperDetailsView";
+}
+
+<h1>DeweloperDetailsView</h1>
+
+<div>
+    <h4>Deweloper</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+    </dl>
+</div>
+<div>|
+    <a asp-action="ListaDeweloperow" asp-controller="Deweloperzy">Powrót</a>
+</div>

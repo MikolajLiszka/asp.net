@@ -1,13 +1,13 @@
-﻿@model IEnumerable<wypozyczalnia_gier.Models.Kategoria>
+﻿@model IEnumerable<wypozyczalnia_gier.Models.Deweloper>
 
 @{
-    ViewData["Title"] = "Kategorie";
+    ViewData["Title"] = "ListaDeweloperowGier";
 }
 
-<h1>Kategorie</h1>
+<h1>Lista deweloperow</h1>
 
 <p>
-    <a asp-action="Add">Dodaj nową kategorię</a>
+    <a asp-action="Add">Dodaj nowego dewelopera</a>
 </p>
 <table class="table">
     <thead>
@@ -32,8 +32,8 @@
                 </td>
             </tr>
         }
-        <div>
-            <a asp-action="Index">Powrót</a>
-        </div>
     </tbody>
+    <div>
+        <a asp-action="Index">Powrót</a>
+    </div>
 </table>

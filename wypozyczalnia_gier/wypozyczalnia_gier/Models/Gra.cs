@@ -24,9 +24,11 @@ namespace wypozyczalnia_gier.Models
         [Required(ErrorMessage = "Wpisz kategorię!")]
         public int KategoriaGryId { get;  set; }
 
+        public Deweloper DeweloperGry { get; set; }
+
         [DisplayName("Deweloper")]
         [Required(ErrorMessage = "Wpisz dewelopera!")]
-        public string DeweloperGry { get; set; }
+        public int DeweloperGryId { get; set; }
 
         [DisplayName("PEGI")]
         [Required(ErrorMessage = "Wpisz PEGI!")]
@@ -40,7 +42,7 @@ namespace wypozyczalnia_gier.Models
         {
             this.TytulGry = gra.TytulGry;
             this.KategoriaGryId = gra.KategoriaGryId;
-            this.DeweloperGry = gra.DeweloperGry;
+            this.DeweloperGryId = gra.DeweloperGryId;
             this.CenaWypozyczeniaGry = gra.CenaWypozyczeniaGry;
             this.PEGI = gra.PEGI;
         }

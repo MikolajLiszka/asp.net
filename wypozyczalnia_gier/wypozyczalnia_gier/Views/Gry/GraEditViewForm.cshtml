@@ -23,9 +23,8 @@
                 <select asp-for="KategoriaGryId" asp-items="Model.Categories" class="form-control"></select>
             </div>
             <div class="form-group">
-                <label asp-for="DeweloperGry" class="control-label"></label>
-                <input asp-for="DeweloperGry" class="form-control" />
-                <span asp-validation-for="DeweloperGry" class="text-danger"></span>
+                <label asp-for="DeweloperGryId" class="control-label"></label>
+                <select asp-for="DeweloperGryId" asp-items="Model.Developers" class="form-control"></select>
             </div>
             <div class="form-group">
                 <label asp-for="PEGI" class="control-label"></label>
@@ -38,14 +37,14 @@
                 <span asp-validation-for="CenaWypozyczeniaGry" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="ListaGier" asp-controller="Gry">Wróć</a>
+    <a asp-action="ListaGier" asp-controller="Gry">Powrót</a>
 </div>
 
 @section Scripts {

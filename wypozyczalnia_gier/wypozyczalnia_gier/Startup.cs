@@ -33,6 +33,7 @@ namespace wypozyczalnia_gier
             //services.AddTransient<IGryRepository, EFGryRepository>();
             services.AddTransient<ICrudGraRepository, CrudGraRepository>();
             services.AddTransient<ICrudKategoriaRepository, CrudKategoriaRepository>();
+            services.AddTransient<ICrudDeweloperRepository, CrudDeweloperRepository>();
 
             services.AddControllersWithViews();
 
