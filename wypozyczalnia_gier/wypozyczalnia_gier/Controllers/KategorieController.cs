@@ -8,7 +8,6 @@ using wypozyczalnia_gier.Models;
 
 namespace wypozyczalnia_gier.Controllers
 {
-    [Authorize]
     public class KategorieController : Controller
     {
         public IActionResult Index()
