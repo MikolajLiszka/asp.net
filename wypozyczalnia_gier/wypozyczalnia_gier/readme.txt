@@ -14,4 +14,4 @@ Data Source - zmień na nazwę swojego połączenia z serwerem bazodanowym oraz 
 - update-database –verbose
 4. Następnie można już otworzyć aplikacje
 5. Aby dodać, edytować lub usunąć grę, kategorię lub dewelopera gry, należy się najpierw zarejestrować wybierając z menu opcję Rejestruj, a potem być zalogowanym opcją Loguj.
-
+6. Aby móc się dostać do api i móc edytować, dodawać lub usuwać gry przez program typu postman należy wpisać login: geralt hasło: triss123
