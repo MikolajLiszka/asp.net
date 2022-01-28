@@ -21,6 +21,7 @@ namespace wypozyczalnia_gier.Controllers
             //return View("GryRepositorium", repository.FindAll());
         }
 
+        [Authorize]
         public IActionResult Edit(int Id)
         {
             Kategoria kategoria = repository.Find(Id);
@@ -28,6 +29,7 @@ namespace wypozyczalnia_gier.Controllers
             return View("KategoriaEditView", kategoria);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(Kategoria kategoria)
         {
@@ -49,6 +51,7 @@ namespace wypozyczalnia_gier.Controllers
             return View("KategoriaDetailsView", repository.FindAll());
         }
 
+        [Authorize]
         public IActionResult Delete(int Id)
         {
             repository.Delete(Id);
@@ -56,10 +59,13 @@ namespace wypozyczalnia_gier.Controllers
             return View("ListaKategoriiView", repository.FindAll());
         }
 
+        [Authorize]
         public IActionResult Add()
         {
             return View("KategoriaAddView");
         }
+
+        [Authorize]
         [HttpPost]
         public IActionResult Add(Kategoria kategoria)
         {

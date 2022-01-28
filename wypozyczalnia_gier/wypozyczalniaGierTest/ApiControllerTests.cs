@@ -19,7 +19,7 @@ namespace wypozyczalniaGierTest
             Assert.Equal(2, games.Count());
         }
 
-        /*
+        
         [Fact]
         public void DeleteGraTest()
         {
@@ -28,11 +28,11 @@ namespace wypozyczalniaGierTest
             repository.Add(new Gra() { TytulGry = "TEST" });
             var controller = new ApiController(repository);
             Microsoft.AspNetCore.Mvc.IActionResult actionResult = controller.DeleteGra(2);
-            Assert.IsType<OkResult>(actionResult);
+            Assert.IsType<NoContentResult>(actionResult);
             actionResult = controller.DeleteGra(6);
             Assert.IsType<NotFoundResult>(actionResult);
         }
-        */
+        
 
         [Fact]
         public void AddGraTest()

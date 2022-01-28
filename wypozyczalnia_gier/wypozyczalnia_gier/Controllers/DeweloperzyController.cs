@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace wypozyczalnia_gier.Controllers
             return View("ListaDeweloperowView", repository.FindAll());
         }
 
+        [Authorize]
         public IActionResult Edit(int Id)
         {
             Deweloper deweloper = repository.Find(Id);
@@ -26,6 +28,7 @@ namespace wypozyczalnia_gier.Controllers
             return View("DeweloperEditView", deweloper);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(Deweloper deweloper)
         {
@@ -46,8 +49,8 @@ namespace wypozyczalnia_gier.Controllers
         {
             return View("DeweloperDetailsView", repository.FindAll());
         }
-       
 
+        [Authorize]
         public IActionResult Delete(int Id)
         {
             repository.Delete(Id);
@@ -55,12 +58,14 @@ namespace wypozyczalnia_gier.Controllers
             return View("ListaDeweloperowView", repository.FindAll());
         }
 
-        
 
+        [Authorize]
         public IActionResult Add()
         {
             return View("DeweloperAddView");
         }
+
+        [Authorize]
         [HttpPost]
         public IActionResult Add(Deweloper deweloper)
         {
